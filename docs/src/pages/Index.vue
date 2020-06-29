@@ -24,9 +24,9 @@
 				</div>
 			</xyz-transition>
 
-			<xyz-transition-group appear xyz="stagger duration-5" tag="div" class="sections__wrap">
-				<docs-section :section="section" v-for="section in sections" :key="section.title"></docs-section>
-			</xyz-transition-group>
+			<div class="sections__wrap">
+				<docs-sections :sections="sections"></docs-sections>
+			</div>
 		</main>
 	</div>
 </template>
@@ -68,36 +68,58 @@
 
 <script>
 import Banner from '~/components/banner/Banner'
-import DocsSection from '~/components/docsSection/DocsSection'
-import PageNav from '~/components/reusable/PageNav'
+import DocsSections from '~/components/sections/DocsSections'
+import PageNav from '~/components/nav/PageNav'
 
 export default {
 	components: {
 		Banner,
-		DocsSection,
+		DocsSections,
 		PageNav,
 	},
 	data() {
 		return {
 			navOpen: false,
 			xRayToggled: false,
-			sectionNames: [
+			sectionTree: [
 				'About',
 				'Installation',
-				'Fade',
-				'Transform',
-				'Origin',
-				'Timing',
-				'Stagger',
-				'Composition',
-				'Variables',
-				'Contexts',
-				'Inheritance',
-				'Nesting',
-				'Modes',
-				'Vue',
-				'React',
-				'Customization',
+				{
+					title: 'Animations',
+					sections: [
+						'Fade',
+						'Transform',
+						'Origin',
+						'Timing',
+						'Stagger',
+						'Composition',
+						'Variables',
+					],
+				},
+				{
+					title: 'Concepts',
+					sections: [
+						'Contexts',
+						'Inheritance',
+						'Nesting',
+						'Modes',
+					],
+				},
+				{
+					title: 'Customization',
+					sections: [
+						'Defaults',
+						'Utilities',
+						'Keyframes',
+					],
+				},
+				{
+					title: 'Integrations',
+					sections: [
+						'Vue',
+						'React',
+					],
+				},
 			],
 		}
 	},
@@ -111,13 +133,23 @@ export default {
 				sectionsObj[sectionEdge.node.title] = sectionEdge.node
 			})
 
-			return this.sectionNames.map((sectionName) => {
-				const section = sectionsObj[sectionName]
-				return {
-					...section,
-					anchor: section.title.trim().toLowerCase().replace(/\s/g, '-'),
-				}
-			})
+			function parseSections(sections) {
+				return sections.map((section) => {
+					if (section.sections) {
+						return {
+							title: section.title,
+							sections: parseSections(section.sections),
+						}
+					}
+					const sectionObj = sectionsObj[section]
+					return {
+						...sectionObj,
+						anchor: sectionObj.title.trim().toLowerCase().replace(/\s/g, '-'),
+					}
+				})
+			}
+
+			return parseSections(this.sectionTree)
 		},
 	},
 	watch: {

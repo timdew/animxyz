@@ -10,7 +10,7 @@ const VueMQ = {
 		}
 
 		function media(options) {
-			if (typeof window === 'undefined') return true
+			if (typeof window === 'undefined') return false
 
 			const { min, max, direction = 'width' } = options
 

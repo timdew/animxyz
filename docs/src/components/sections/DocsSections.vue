@@ -1,17 +1,23 @@
 <template>
-	<section class="docs-section" :id="section.anchor">
-		<div class="section-column section-text xyz-nested" xyz="fade left">
-			<div class="section-column__content">
-				<h1 class="section-title">{{ section.title }}</h1>
-				<markdown-content :content="section.content"></markdown-content>
-			</div>
+	<xyz-transition-group appear xyz="stagger duration-5" tag="div">
+		<div class="docs-section-group" v-for="(section, sectionIndex) in sections" :key="sectionIndex">
+			<docs-sections v-if="section.sections" :sections="section.sections"></docs-sections>
+
+			<section v-if="!section.sections" class="docs-section" :id="section.anchor">
+				<div class="section-column section-text xyz-nested" xyz="fade left">
+					<div class="section-column__content">
+						<h1 class="section-title">{{ section.title }}</h1>
+						<markdown-content :content="section.content"></markdown-content>
+					</div>
+				</div>
+				<div class="section-column section-sandbox xyz-nested" xyz="fade up" v-if="section.examples.length">
+					<div class="section-column__content">
+						<sandbox :modifiers="section.modifiers" :examples="section.examples"></sandbox>
+					</div>
+				</div>
+			</section>
 		</div>
-		<div class="section-column section-sandbox xyz-nested" xyz="fade up" v-if="section.examples.length">
-			<div class="section-column__content">
-				<sandbox :modifiers="section.modifiers" :examples="section.examples"></sandbox>
-			</div>
-		</div>
-	</section>
+	</xyz-transition-group>
 </template>
 
 <script>
@@ -19,8 +25,8 @@ import MarkdownContent from '~/components/reusable/MarkdownContent'
 import Sandbox from '~/components/reusable/Sandbox'
 
 export default {
-	name: 'DocsSection',
-	props: ['section'],
+	name: 'DocsSections',
+	props: ['sections'],
 	components: {
 		MarkdownContent,
 		Sandbox,
@@ -29,6 +35,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.docs-section-group {
+	& + & {
+		margin-top: 12vw;
+
+		@include media('>=desktop') {
+			margin-top: 8rem;
+		}
+	}
+}
+
 .docs-section {
 	display: flex;
 	align-items: flex-start;
