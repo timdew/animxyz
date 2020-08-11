@@ -23,7 +23,7 @@ import VScrollLock from 'v-scroll-lock'
 // Layouts
 import DefaultLayout from '~/layouts/Default.vue'
 
-export default function (Vue) {
+export default function (Vue, context) {
 	Vue.use(VueAnimXyz)
 	Vue.use(VueLocation)
 	Vue.use(VueMQ, {
@@ -43,4 +43,40 @@ export default function (Vue) {
 	Vue.use(VScrollLock)
 
 	Vue.component('Layout', DefaultLayout)
+
+	Object.assign(context.appOptions, {
+		watch: {
+			$location() {
+				this.onLocationChange()
+			}
+		},
+		methods: {
+			onLocationChange(event) {
+				if (this.$location.hash) {
+					setTimeout(() => {
+						const hashElement = document.getElementById(this.$location.hash.substring(1))
+						if (hashElement) {
+							hashElement.scrollIntoView({
+								behavior: 'smooth',
+							})
+						}
+					}, 0)
+				}
+			}
+		},
+		mounted() {
+			this.onLocationChange()
+		},
+	})
+
+	if (context.isClient) {
+		document.addEventListener('click', (event) => {
+			if (event.target.tagName === 'A') {
+				if (event.target.pathname === window.location.pathname) {
+					event.preventDefault()
+					history.pushState(null, null, event.target.href)
+				}
+			}
+		})
+	}
 }
