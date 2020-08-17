@@ -1,25 +1,27 @@
 <template>
-	<div class="docs-section__wrap" :id="section.id">
-		<article class="docs-section">
-			<header class="section-header">
-				<div class="header-top__wrap">
-					<div class="section-title__wrap">
-						<h1 class="section-title">
-							{{ section.title }}
-						</h1>
-						<a :href="`#${section.id}`" class="section-anchor">
-							<icon-link></icon-link>
-							<span class="screen-reader-only">Link to {{ section.title }}</span>
-						</a>
-					</div>
-
-					<button class="section-examples-button">View Examples</button>
+	<article class="docs-section__wrap" :id="section.id">
+		<header class="section-header">
+			<div class="header-content">
+				<div class="section-title__wrap">
+					<h1 class="section-title">
+						{{ section.title }}
+					</h1>
+					<a :href="`#${section.id}`" class="section-anchor">
+						<icon-link></icon-link>
+						<span class="screen-reader-only">Link to {{ section.title }}</span>
+					</a>
 				</div>
+
+				<button class="section-examples-button">View Examples</button>
+			</div>
+		</header>
+		<div class="section-content__wrap">
+			<div class="section-content">
 				<span class="section-quote" v-if="section.quote">{{ section.quote }}</span>
-			</header>
-			<markdown-content :content="section.content"></markdown-content>
-		</article>
-	</div>
+				<markdown-content :content="section.content"></markdown-content>
+			</div>
+		</div>
+	</article>
 </template>
 
 <script>
@@ -40,10 +42,12 @@ export default {
 $active-border-width: 0.5rem;
 
 .docs-section__wrap {
-	display: flex;
 	position: relative;
-	padding: 6vw 0;
 	min-height: 60vh;
+}
+
+.section-content__wrap {
+	padding: 0 0 6vw;
 
 	@include media('>=laptop') {
 		padding: 4rem $sp-m;
@@ -54,97 +58,82 @@ $active-border-width: 0.5rem;
 	}
 }
 
-.docs-section {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	max-width: 48rem;
-	width: 100%;
-	padding: $sp-l $sp-s;
-	margin: auto;
-	transition: background-color 1s $ease-out, box-shadow 0.5s $ease-out;
-
-	@include media('>=laptop') {
-		padding: $sp-xl $sp-l;
-
-		.docs-section__wrap.active & {
-			background-color: white;
-			border-radius: 1rem;
-		}
-	}
-
-	@include media('>=x-large') {
-		padding: $sp-xl;
-	}
-}
-
 .section-header {
-	margin-bottom: $sp-m;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: primary-color(50);
+	padding: $sp-xs;
+	border-bottom: 1px solid primary-color(200);
+
+	@include media('<laptop') {
+		margin-bottom: $sp-m;
+	}
 }
 
-.header-top__wrap {
+.header-content {
 	display: flex;
 	align-items: center;
 }
 
 .section-title__wrap {
-	position: relative;
-
-	&:hover {
-		.section-anchor {
-			background-color: primary-color(700, 0.15);
-			opacity: 1;
-			transform: translate(0, -50%);
-		}
-	}
-
-	.section-anchor {
-		&:hover,
-		&:focus {
-			background-color: primary-color(700);
-
-			svg {
-				--icon-color: #{$white};
-			}
-		}
-	}
-}
-
-.section-anchor {
-	@include circle(1.75rem);
 	display: flex;
-	position: absolute;
-	left: 100%;
-	top: 50%;
-	background-color: primary-color(700, 0);
-	opacity: 0;
-	transform: translate(-$sp-s, -50%);
-	transition: opacity 0.2s $ease-in-out, background-color 0.2s $ease-in-out, transform 0.2s $ease-in-out;
-
-	svg {
-		--icon-color: #{primary-color(700)};
-		height: 1rem;
-		width: auto;
-		margin: auto;
-	}
+	align-items: center;
+	position: relative;
 }
 
 .section-title {
-	font-size: 2.5rem;
+	font-size: 1.5rem;
 	line-height: 1;
 	font-weight: 640;
 	color: primary-color(700);
 
 	@include media('<phone') {
-		font-size: 1.75rem;
+		font-size: 1.25rem;
+	}
+}
+
+.section-anchor {
+	@include circle(1.25rem);
+	display: flex;
+	background-color: primary-color(700, 0.15);
+	margin-left: $sp-xxs;
+	transition: background-color 0.2s $ease-in-out, transform 0.2s $ease-in-out;
+
+	svg {
+		--icon-color: #{primary-color(600)};
+		@include size(0.75rem);
+		margin: auto;
+	}
+
+	&:focus,
+	&:hover {
+		outline: none;
+		background-color: primary-color(600);
+
+		svg {
+			--icon-color: white;
+		}
+	}
+
+	&:hover {
+		transform: scale(1.25);
+	}
+
+	&:active {
+		background-color: $cyan;
+		transform: scale(1);
+
+		svg {
+			--icon-color: #{$white};
+		}
 	}
 }
 
 .section-examples-button {
 	margin-left: auto;
 	height: 1.75rem;
-	display: flex;
+	display: none;
 	align-items: center;
 	padding: 0 $sp-xxs;
 	border-radius: $br-m;
@@ -170,20 +159,40 @@ $active-border-width: 0.5rem;
 			transform: translateX(0.75rem);
 		}
 	}
+
+	@include media('<laptop') {
+		display: flex;
+	}
 }
 
 .section-quote {
 	display: block;
-	font-size: 1.125rem;
-	font-weight: 500;
+	font-weight: 450;
+	font-size: $fs-l;
+	line-height: 1.75rem;
 	color: primary-color(600);
-	margin-top: $sp-s;
-	margin-left: $sp-l;
+	margin-bottom: $sp-m;
+}
 
-	@include media('<phone') {
-		margin-top: $sp-xs;
-		margin-left: $sp-m;
-		font-size: 1rem;
+.section-content {
+	position: relative;
+	padding: 0 $sp-s $sp-l;
+	max-width: 48rem;
+	width: 100%;
+	margin: auto;
+	transition: background-color 0.5s $ease-in-out;
+
+	@include media('>=laptop') {
+		padding: $sp-xl $sp-l;
+
+		.docs-section__wrap.active & {
+			background-color: white;
+			border-radius: 1rem;
+		}
+	}
+
+	@include media('>=x-large') {
+		padding: $sp-xl;
 	}
 }
 </style>
