@@ -4,7 +4,7 @@ id: vue-xyz-transition-group
 
 examples:
   - name: List
-    component: ExampleXyzTransitionGroupList
+    component: XyzTransitionGroup_List
     code:
       - name: Vue
         content: |
@@ -15,14 +15,14 @@ examples:
           <button @click="addElement">Add Element</button>
           <button @click="removeElement">Remove Element</button>
   - name: Index
-    component: ExampleXyzTransitionGroupIndex
+    component: XyzTransitionGroup_Index
     code:
       - name: Vue
         content: |
           ##vue
           <XyzTransitionGroup
             class="square-grid"
-            xyz="fade small out-back-5"
+            xyz="fade small out-back-3"
             :duration="2500"
             :style="{
               '--xyz-in-stagger': '0.025s',
@@ -38,7 +38,7 @@ examples:
             ></div>
           </XyzTransitionGroup>
   - name: Nested
-    component: ExampleXyzTransitionGroupNested
+    component: XyzTransitionGroup_Nested
     code:
       - name: Vue
         content: |

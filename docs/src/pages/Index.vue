@@ -65,6 +65,13 @@
 								</p>
 							</div>
 							<div class="feature xyz-nested">
+								<h3>Customizable</h3>
+								<p>
+									Out-of-the-box utilities not enough? Fine-tune any animation with CSS variables to your heart's
+									content. Simple as: <code class="text--nowrap">--xyz-translate-y: 42%;</code>
+								</p>
+							</div>
+							<div class="feature xyz-nested">
 								<h3>Performant</h3>
 								<p>
 									Silky smooth animations out of the box. Only <code>2.68kB</code> for base functionality and
@@ -72,25 +79,29 @@
 								</p>
 							</div>
 							<div class="feature xyz-nested">
-								<h3>Customizable</h3>
+								<h3>Less Code</h3>
 								<p>
-									Use our provided animation utilities or make your own. Override any animation properties with simple
-									CSS variables. <code class="text--nowrap">--xyz-translate-y: 42%;</code>
+									Powerful CSS animations without custom keyframes for every subtle animation need. Less fuss = more
+									fun.
 								</p>
 							</div>
 							<div class="feature xyz-nested">
-								<h3>Nest &amp; Stagger</h3>
+								<h3>Nest & Stagger</h3>
 								<p>
 									Stagger lists of elements in both forward and reverse order, while animating nested items in sync with
 									their parents.
 								</p>
+							</div>
+							<div class="feature xyz-nested">
+								<h3>Plug & Play</h3>
+								<p>Works with HTML and CSS, or use our Vue and React (coming soon!) plugins for even more power.</p>
 							</div>
 						</section>
 					</XyzTransition>
 				</div>
 			</div>
 
-			<XyzTransition appear xyz="fade down ease-out" style="--xyz-delay: 0.6s">
+			<XyzTransition appear xyz="fade down ease-out delay-6">
 				<section class="used-by copy-content">
 					<h3>AnimXYZ is used by:</h3>
 					<ul class="used-by__list">
@@ -110,14 +121,19 @@
 				</section>
 			</XyzTransition>
 
-			<XyzTransition appear xyz="fade down ease-out" style="--xyz-delay: 0.7s">
+			<XyzTransition appear xyz="fade down ease-out delay-7">
 				<footer class="created-by copy-content">
 					<p>
 						Created by <a href="https://milesingram.me/" target="_blank">Miles Ingram</a> and
-						<a href="https://mattaningram.com" target="_blank">Mattan Ingram</a> <a href="https://twitter.com/mattaningram" class="social-link" target="_blank"><IconTwitter></IconTwitter><span class="screen-reader-only"Twitter</span></a>.
+						<a href="https://mattaningram.com" target="_blank">Mattan Ingram</a>
+						<a href="https://twitter.com/mattaningram" class="social-link" target="_blank">
+							<IconTwitter></IconTwitter><span class="screen-reader-only">Twitter</span>
+						</a>
 					</p>
 					<p>
-						Built with <a href="https://vuejs.org/" target="_blank">Vue</a>, <a href="https://gridsome.org/" target="_blank">Gridsome</a>, and AnimXYZ. Hosted on <a href="https://www.netlify.com/" target="_blank">Netlify</a>.
+						Built with <a href="https://vuejs.org/" target="_blank">Vue</a>,
+						<a href="https://gridsome.org/" target="_blank">Gridsome</a>, and AnimXYZ. Hosted on
+						<a href="https://www.netlify.com/" target="_blank">Netlify</a>.
 					</p>
 				</footer>
 			</XyzTransition>
@@ -219,11 +235,11 @@ export default {
 					presets: [
 						{
 							title: '🎓 Drop out',
-							utilities: ['fade', 'down-100', 'back-5'],
+							utilities: ['fade', 'down-100%', 'back-5'],
 						},
 						{
 							title: '🌪 Spinny',
-							utilities: ['fade', 'down-5', 'rotate-right-50', 'stagger'],
+							utilities: ['fade', 'down-5', 'rotate-right-50%', 'stagger'],
 						},
 						{
 							title: '⤵️ Flippy',
@@ -231,11 +247,12 @@ export default {
 						},
 						{
 							title: '💾 Floppy',
-							utilities: ['fade', 'front-5', 'flip-down-50', 'duration-10', 'stagger-5'],
+							utilities: ['fade', 'front-3', 'flip-down-50%', 'duration-10', 'stagger-5'],
 						},
 						{
 							title: '🎈 Yoink!',
-							variables: ['stagger: 0.2s', 'translate-y: 400%', 'scale-x: 0', 'ease: cubic-bezier(.26,2.05,.84,.38)'],
+							utilities: ['stagger-2', 'narrow-100%'],
+							variables: ['translate-y: -350%', 'ease: cubic-bezier(0.5,-1.5,0.5,1.5)'],
 						},
 						{
 							title: '📺 Click',
@@ -253,7 +270,7 @@ export default {
 								'origin: -200%',
 								'stagger: 0.1s',
 								'duration: 0.75s',
-								'perspective: 10px',
+								'perspective: 100px',
 								'translate-z: 100px',
 								'translate-y: 10vh',
 							],
@@ -339,7 +356,6 @@ export default {
 }
 
 .intro-text {
-	--xyz-duration: 0.7s;
 	color: primary-color(800);
 	font-size: $fs-xxxl;
 	font-weight: 650;
@@ -554,6 +570,7 @@ export default {
 	text-align: center;
 	font-weight: 500;
 	font-size: $fs-s;
+	padding: 0 $sp-m;
 	margin: 0 auto;
 	margin-top: $sp-xxxl;
 	margin-bottom: 2.25rem;
@@ -564,7 +581,7 @@ export default {
 }
 
 .social-link {
-	--iconColor: #{primary-color(400)};
+	--icon-color: #{primary-color(400)};
 	display: inline-block;
 	vertical-align: middle;
 	margin-left: $sp-xxxs;
@@ -578,7 +595,7 @@ export default {
 	}
 
 	&:hover {
-		--iconColor: #{primary-color(700)};
+		--icon-color: #{primary-color(700)};
 	}
 }
 
