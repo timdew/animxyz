@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/ingram-projects/animxyz/compare/v0.4.1...v0.5.0) (2021-02-16)
+
+
+### Features
+
+* added animation-direction utilities ([9597ffb](https://github.com/ingram-projects/animxyz/commit/9597ffba63fd59cbeee8911ed34a8a9f22c418f1))
+
+
+
+
+
+## [0.4.1](https://github.com/ingram-projects/animxyz/compare/v0.4.0...v0.4.1) (2021-02-09)
+
+
+### Bug Fixes
+
+* add types declaration file ([9838dc0](https://github.com/ingram-projects/animxyz/commit/9838dc04a15f74da351113588ea14cb65e3cda01))
+* tweaked peer dependencies ([b5db20b](https://github.com/ingram-projects/animxyz/commit/b5db20bb59efdf2069c9bc152a638b8b0da289b9))
+
+
+
+
+
+# [0.4.0](https://github.com/ingram-projects/animxyz/compare/v0.3.0...v0.4.0) (2021-01-17)
+
+
+### Bug Fixes
+
+* temporary workaround for postcss-calc bug ([3bbf7e4](https://github.com/ingram-projects/animxyz/commit/3bbf7e45bc8d16bdfb5b7a957b1c5bfd9b7e4393))
+
+
+### Features
+
+* added appear-visible prop to vue2 package ([5db7914](https://github.com/ingram-projects/animxyz/commit/5db791443036081f646230c3c989755d78785867))
+
+
+
+
+
 # [0.3.0](https://github.com/ingram-projects/animxyz/compare/v0.2.0...v0.3.0) (2020-12-31)
 
 

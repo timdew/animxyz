@@ -7,11 +7,11 @@
 
 			<div class="landing-content">
 				<section class="hero__wrap">
-					<XyzTransition appear xyz="delay-4 fade small-2 duration-7 ease-out">
+					<XyzTransition appear-visible xyz="fade small-2 duration-7 ease-out delay-2">
 						<h1 class="intro-text">The first composable<br />CSS animation toolkit.</h1>
 					</XyzTransition>
 
-					<XyzTransition appear xyz="delay-5 stagger-3 fade down small-2 ease-out" duration="auto">
+					<XyzTransition appear-visible xyz="fade down small-2 stagger-3 ease-out delay-2" duration="auto">
 						<div class="tech-logos__wrap xyz-none">
 							<IconVue class="xyz-nested"></IconVue>
 							<IconReact class="xyz-nested"></IconReact>
@@ -19,7 +19,7 @@
 						</div>
 					</XyzTransition>
 
-					<XyzTransition appear xyz="delay-5 stagger-3 fade down small-2 ease-out" duration="auto">
+					<XyzTransition appear-visible xyz="fade down small-2 stagger-3 ease-out delay-2" duration="auto">
 						<div class="links__wrap xyz-none">
 							<a
 								class="cta-button github-link xyz-nested"
@@ -42,8 +42,8 @@
 				</section>
 
 				<div class="copy__wrap copy-content">
-					<section class="about-section">
-						<XyzTransition appear xyz="delay-5 fade down ease-out">
+					<XyzTransition appear-visible xyz="fade down ease-out delay-2">
+						<section class="about-section">
 							<div class="about-text">
 								<p>
 									AnimXYZ helps you create, customize, and compose animations for your website. Powered by CSS variables
@@ -52,10 +52,10 @@
 									will bring your website to life.
 								</p>
 							</div>
-						</XyzTransition>
-					</section>
+						</section>
+					</XyzTransition>
 
-					<XyzTransition appear xyz="delay-5 fade down stagger-3 ease-out" duration="auto">
+					<XyzTransition appear-visible xyz="fade down stagger-2 ease-out delay-2" duration="auto">
 						<section class="features-section xyz-none">
 							<div class="feature xyz-nested">
 								<h3>Composable</h3>
@@ -101,7 +101,7 @@
 				</div>
 			</div>
 
-			<XyzTransition appear xyz="fade down ease-out delay-6">
+			<XyzTransition appear-visible xyz="fade down ease-out delay-2">
 				<section class="used-by copy-content">
 					<h3>AnimXYZ is used by:</h3>
 					<ul class="used-by__list">
@@ -121,7 +121,7 @@
 				</section>
 			</XyzTransition>
 
-			<XyzTransition appear xyz="fade down ease-out delay-7">
+			<XyzTransition appear-visible xyz="fade down ease-out delay-2">
 				<footer class="created-by copy-content">
 					<p>
 						Created by <a href="https://milesingram.me/" target="_blank">Miles Ingram</a> and
@@ -138,20 +138,28 @@
 				</footer>
 			</XyzTransition>
 
-			<div class="sandbox__wrap">
-				<Sandbox v-bind="sandboxProps" id="sandbox"></Sandbox>
-			</div>
+			<XyzTransition appear-visible xyz="fade duration-10 delay-2">
+				<div class="sandbox__wrap">
+					<Sandbox v-bind="sandboxProps" id="sandbox"></Sandbox>
+				</div>
+			</XyzTransition>
+
+			<XyzTransition appear-visible xyz="fade duration-10 delay-2">
+				<DarkModeToggle></DarkModeToggle>
+			</XyzTransition>
 		</main>
 	</Layout>
 </template>
 
 <script>
 import Banner from '~/components/banner/Banner'
+import DarkModeToggle from '~/components/reusable/DarkModeToggle'
 import Sandbox from '~/components/reusable/Sandbox'
 
 export default {
 	components: {
 		Banner,
+		DarkModeToggle,
 		Sandbox,
 	},
 	data() {
@@ -164,7 +172,7 @@ export default {
 						template: `
 <div class="example-wrap">
 	<XyzTransition duration="auto" v-xyz="data.utilities" :style="data.variables" v-on="data.listeners">
-		<div class="square-group xyz-none" v-if="data.toggled">
+		<div class="item-group xyz-none" v-if="data.toggled">
 			<div class="square xyz-nested" v-for="index in 3" :key="index"></div>
 		</div>
 	</XyzTransition>
@@ -175,7 +183,7 @@ export default {
 								name: 'HTML',
 								content: `
 ##html
-<div class="square-group" \${data.utilitiesString && \`xyz="\${data.utilitiesString}"\`}>
+<div class="item-group" \${data.utilitiesString && \`xyz="\${data.utilitiesString}"\`}>
 	<div class="square \${data.mode}"></div>
 	<div class="square \${data.mode}"></div>
 	<div class="square \${data.mode}"></div>
@@ -183,7 +191,7 @@ export default {
 
 \${data.variablesString && \`
 <style>
-	.square-group { \${data.variablesString} }
+	.item-group { \${data.variablesString} }
 </style>
 \`}
 								`,
@@ -192,7 +200,7 @@ export default {
 								name: 'Vue',
 								content: `
 ##vue
-<XyzTransitionGroup class="square-group" \${data.utilitiesString && \`xyz="\${data.utilitiesString}"\`}>
+<XyzTransitionGroup class="item-group" \${data.utilitiesString && \`xyz="\${data.utilitiesString}"\`}>
 	<div class="square" v-if="\${data.toggled}"></div>
 	<div class="square" v-if="\${data.toggled}"></div>
 	<div class="square" v-if="\${data.toggled}"></div>
@@ -201,7 +209,7 @@ export default {
 \${data.variablesString && \`
 ##html
 <style>
-	.square-group { \${data.variablesString} }
+	.item-group { \${data.variablesString} }
 </style>
 \`}
 								`,
@@ -210,7 +218,7 @@ export default {
 								name: 'React',
 								content: `
 ##jsx
-<XyzTransitionGroup className="square-group" \${data.utilitiesString && \`xyz="\${data.utilitiesString}"\`}>
+<XyzTransitionGroup className="item-group" \${data.utilitiesString && \`xyz="\${data.utilitiesString}"\`}>
 	{\${data.toggled} && <div className="square" />}
 	{\${data.toggled} && <div className="square" />}
 	{\${data.toggled} && <div className="square" />}
@@ -219,7 +227,7 @@ export default {
 \${data.variablesString && \`
 ##html
 <style>
-	.square-group { \${data.variablesString} }
+	.item-group { \${data.variablesString} }
 </style>
 \`}
 								`,
@@ -256,7 +264,7 @@ export default {
 						},
 						{
 							title: '📺 Click',
-							variables: ['duration: 0.6s', 'scale-x: 1.25', 'scale-y: 0'],
+							utilities: ['duration-6', 'short-100%', 'wide-25%'],
 						},
 						{
 							title: `🌀 It's gone spiral!`,
@@ -317,6 +325,14 @@ export default {
 							name: 'Stagger',
 							types: ['stagger'],
 						},
+						{
+							name: 'Iterate',
+							types: ['iterate'],
+						},
+						{
+							name: 'Direction',
+							types: ['direction'],
+						},
 					],
 				},
 			},
@@ -326,6 +342,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page__wrap {
+	overflow-x: hidden;
+}
+
 .page-content {
 	display: flex;
 	flex-direction: column;
@@ -356,7 +376,6 @@ export default {
 }
 
 .intro-text {
-	color: primary-color(800);
 	font-size: $fs-xxxl;
 	font-weight: 650;
 	line-height: 1.35;
@@ -397,8 +416,8 @@ export default {
 .cta-button {
 	--icon-color: #{primary-color(600)};
 	background-color: primary-color(100);
-	border-bottom: 3px solid primary-color(300);
 	color: primary-color(600);
+	border-bottom: 3px solid primary-color(300);
 	height: 3rem;
 	width: 16rem;
 	border-radius: $br-l;
@@ -411,6 +430,13 @@ export default {
 	text-decoration: none;
 	transition: 0.2s $ease-in-out;
 	transition-property: background-color, box-shadow, border;
+
+	@include dark-mode {
+		--icon-color: #{primary-color(200)};
+		background-color: primary-color(700);
+		color: primary-color(200);
+		border-color: primary-color(800);
+	}
 
 	& + & {
 		margin-left: $sp-s;
@@ -425,10 +451,17 @@ export default {
 	&:hover,
 	&:focus {
 		--icon-color: #{primary-color(700)};
-		border-color: primary-color(400);
+		background-color: primary-color(300);
 		color: primary-color(700);
+		border-color: primary-color(400);
 		outline: none;
-		background-color: primary-color(200, 0.75);
+
+		@include dark-mode {
+			--icon-color: #{primary-color(100)};
+			background-color: primary-color(600);
+			color: primary-color(100);
+			border-color: primary-color(700);
+		}
 
 		svg {
 			transform: scale(1.15);
@@ -436,7 +469,7 @@ export default {
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 4px transparentize($cyan, 0.5);
+		box-shadow: 0 0 0 2px $cyan;
 	}
 
 	@include media('<tablet') {
@@ -469,17 +502,31 @@ export default {
 
 .docs-link {
 	--icon-color: #{primary-color(100)};
-	border-color: primary-color(700);
 	background-color: primary-color(600);
 	color: primary-color(100);
+	border-color: primary-color(700);
+
+	@include dark-mode {
+		--icon-color: #{primary-color(800)};
+		background-color: primary-color(300);
+		color: primary-color(800);
+		border-color: primary-color(500);
+	}
 
 	&:hover,
 	&:focus {
 		--icon-color: #{primary-color(50)};
+		background-color: primary-color(700);
 		color: primary-color(50);
 		border-color: primary-color(800);
 		outline: none;
-		background-color: primary-color(700);
+
+		@include dark-mode {
+			--icon-color: #{primary-color(800)};
+			background-color: primary-color(200);
+			color: primary-color(800);
+			border-color: primary-color(500);
+		}
 	}
 }
 
@@ -494,7 +541,6 @@ export default {
 }
 
 .about-text {
-	--text-color: #{primary-color(700)};
 	font-size: $fs-l;
 	font-weight: 400;
 
@@ -516,7 +562,6 @@ export default {
 	p {
 		font-size: $fs-m;
 		line-height: 1.75;
-		color: primary-color(700);
 	}
 
 	@include media('<tablet') {
@@ -578,6 +623,10 @@ export default {
 	@include media('<phone') {
 		margin-bottom: $sp-xxxl;
 	}
+
+	@include dark-mode {
+		--text-color: #{primary-color(400)};
+	}
 }
 
 .social-link {
@@ -605,5 +654,16 @@ export default {
 
 .sandbox {
 	min-height: 100vh;
+}
+
+.dark-mode-toggle {
+	position: absolute;
+	top: $sp-m;
+	right: $sp-m;
+
+	@include media('<phone') {
+		top: $sp-s;
+		right: $sp-s;
+	}
 }
 </style>

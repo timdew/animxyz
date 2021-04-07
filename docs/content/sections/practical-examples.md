@@ -15,25 +15,25 @@ examples:
               <div class="hero-logo xyz-nested"></div>
               <p class="hero-text xyz-nested">Curabitur blandit tempus porttitor. Morbi leo risus.</p>
             </div>
-            <div class="page-thing1-wrap" xyz="fade flip-down stagger duration-10 delay-2 ease-out-back">
-              <div class="page-thing1 xyz-nested"></div>
-              <div class="page-thing1 xyz-nested"></div>
-              <div class="page-thing1 xyz-nested"></div>
+            <div class="page-features" xyz="fade flip-down stagger duration-10 delay-2 ease-out-back">
+              <div class="feature-item xyz-nested"></div>
+              <div class="feature-item xyz-nested"></div>
+              <div class="feature-item xyz-nested"></div>
             </div>
-            <div class="page-thing2-wrap" xyz="fade small stagger delay-4 ease-in-out">
-              <div class="page-thing2-left" xyz="fade left stagger">
-                <div class="page-thing2 xyz-nested"></div>
-                <div class="page-thing2 xyz-nested"></div>
-                <div class="page-thing2 xyz-nested"></div>
+            <div class="page-section" xyz="fade small stagger delay-4 ease-in-out">
+              <div class="section-left" xyz="fade left stagger">
+                <div class="section-item xyz-nested"></div>
+                <div class="section-item xyz-nested"></div>
+                <div class="section-item xyz-nested"></div>
               </div>
-              <div class="page-thing2-right xyz-nested" xyz="fade big delay-10"></div>
+              <div class="section-right xyz-nested" xyz="fade big delay-10"></div>
             </div>
             <div class="page-footer" xyz="fade bottom ease-in-out delay-10">
               <div class="footer-logo xyz-nested" xyz="fade left ease-in-out delay-10"></div>
               <div class="footer-right" xyz="fade up stagger ease-in-out delay-10">
-                <div class="page-thing2 xyz-nested"></div>
-                <div class="page-thing2 xyz-nested"></div>
-                <div class="page-thing2 xyz-nested"></div>
+                <div class="footer-item xyz-nested"></div>
+                <div class="footer-item xyz-nested"></div>
+                <div class="footer-item xyz-nested"></div>
               </div>
             </div>
           </div>
@@ -46,25 +46,25 @@ examples:
                 <div class="hero-logo xyz-nested"></div>
                 <p class="hero-text xyz-nested">Curabitur blandit tempus porttitor. Morbi leo risus.</p>
               </div>
-              <div class="page-thing1-wrap" xyz="fade flip-down stagger duration-10 delay-2 ease-out-back">
-                <div class="page-thing1 xyz-nested"></div>
-                <div class="page-thing1 xyz-nested"></div>
-                <div class="page-thing1 xyz-nested"></div>
+              <div class="page-features" xyz="fade flip-down stagger duration-10 delay-2 ease-out-back">
+                <div class="feature-item xyz-nested"></div>
+                <div class="feature-item xyz-nested"></div>
+                <div class="feature-item xyz-nested"></div>
               </div>
-              <div class="page-thing2-wrap" xyz="fade small stagger delay-4 ease-in-out">
-                <div class="page-thing2-left" xyz="fade left stagger">
-                  <div class="page-thing2 xyz-nested"></div>
-                  <div class="page-thing2 xyz-nested"></div>
-                  <div class="page-thing2 xyz-nested"></div>
+              <div class="page-section" xyz="fade small stagger delay-4 ease-in-out">
+                <div class="section-left" xyz="fade left stagger">
+                  <div class="section-item xyz-nested"></div>
+                  <div class="section-item xyz-nested"></div>
+                  <div class="section-item xyz-nested"></div>
                 </div>
-                <div class="page-thing2-right xyz-nested" xyz="fade big delay-10"></div>
+                <div class="section-right xyz-nested" xyz="fade big delay-10"></div>
               </div>
               <div class="page-footer" xyz="fade bottom ease-in-out delay-10">
                 <div class="footer-logo xyz-nested" xyz="fade left ease-in-out delay-10"></div>
                 <div class="footer-right" xyz="fade up stagger ease-in-out delay-10">
-                  <div class="page-thing2 xyz-nested"></div>
-                  <div class="page-thing2 xyz-nested"></div>
-                  <div class="page-thing2 xyz-nested"></div>
+                  <div class="footer-item xyz-nested"></div>
+                  <div class="footer-item xyz-nested"></div>
+                  <div class="footer-item xyz-nested"></div>
                 </div>
               </div>
             </div>
@@ -73,30 +73,30 @@ examples:
         content: |
           ##jsx
           <XyzTransition appear duration="auto">
-            <div className="page-wrap">
-              <div className="page-hero" xyz="fade small stagger ease-out-back">
-                <div className="hero-logo xyz-nested"></div>
-                <p className="hero-text xyz-nested">Curabitur blandit tempus porttitor. Morbi leo risus.</p>
+            <div class="page-wrap">
+              <div class="page-hero" xyz="fade small stagger ease-out-back">
+                <div class="hero-logo xyz-nested"></div>
+                <p class="hero-text xyz-nested">Curabitur blandit tempus porttitor. Morbi leo risus.</p>
               </div>
-              <div className="page-thing1-wrap" xyz="fade flip-down stagger duration-10 delay-2 ease-out-back">
-                <div className="page-thing1 xyz-nested"></div>
-                <div className="page-thing1 xyz-nested"></div>
-                <div className="page-thing1 xyz-nested"></div>
+              <div class="page-features" xyz="fade flip-down stagger duration-10 delay-2 ease-out-back">
+                <div class="feature-item xyz-nested"></div>
+                <div class="feature-item xyz-nested"></div>
+                <div class="feature-item xyz-nested"></div>
               </div>
-              <div className="page-thing2-wrap" xyz="fade small stagger delay-4 ease-in-out">
-                <div className="page-thing2-left" xyz="fade left stagger">
-                  <div className="page-thing2 xyz-nested"></div>
-                  <div className="page-thing2 xyz-nested"></div>
-                  <div className="page-thing2 xyz-nested"></div>
+              <div class="page-section" xyz="fade small stagger delay-4 ease-in-out">
+                <div class="section-left" xyz="fade left stagger">
+                  <div class="section-item xyz-nested"></div>
+                  <div class="section-item xyz-nested"></div>
+                  <div class="section-item xyz-nested"></div>
                 </div>
-                <div className="page-thing2-right xyz-nested" xyz="fade big delay-10"></div>
+                <div class="section-right xyz-nested" xyz="fade big delay-10"></div>
               </div>
-              <div className="page-footer" xyz="fade bottom ease-in-out delay-10">
-                <div className="footer-logo xyz-nested" xyz="fade left ease-in-out delay-10"></div>
-                <div className="footer-right" xyz="fade up stagger ease-in-out delay-10">
-                  <div className="page-thing2 xyz-nested"></div>
-                  <div className="page-thing2 xyz-nested"></div>
-                  <div className="page-thing2 xyz-nested"></div>
+              <div class="page-footer" xyz="fade bottom ease-in-out delay-10">
+                <div class="footer-logo xyz-nested" xyz="fade left ease-in-out delay-10"></div>
+                <div class="footer-right" xyz="fade up stagger ease-in-out delay-10">
+                  <div class="footer-item xyz-nested"></div>
+                  <div class="footer-item xyz-nested"></div>
+                  <div class="footer-item xyz-nested"></div>
                 </div>
               </div>
             </div>
@@ -107,19 +107,19 @@ examples:
       - name: Vue
         content: |
           ##vue
-          <XyzTransitionGroup appear class="square-grid cat-grid" xyz="fade duration-5 appear-front-3 small-3 appear-small-0 stagger-2 out-stagger-0">
+          <XyzTransitionGroup appear class="example-grid cat-grid" xyz="fade duration-5 appear-front-3 small-3 appear-small-0 stagger-2 out-stagger-0">
             <div class="square" v-for="index in numCats" :key="index">
-              <img class="square-image" :src="\`https://cataas.com/cat?type=sm?id=\${index}\`" alt="Picture of a cat"
+              <img class="item-image" :src="\`https://cataas.com/cat?type=sm?id=\${index}\`" alt="Picture of a cat"
               />
             </div>
           </XyzTransitionGroup>
       - name: React
         content: |
           ##jsx
-          <XyzTransitionGroup appear class="square-grid cat-grid" xyz="fade duration-5 appear-front-3 small-3 appear-small-0 stagger-2 out-stagger-0">
+          <XyzTransitionGroup appear class="example-grid cat-grid" xyz="fade duration-5 appear-front-3 small-3 appear-small-0 stagger-2 out-stagger-0">
             {[...Array(numCats)].map((_, index) => (
               <div class="square" key={index}>
-                <img class="square-image" src={\`https://cataas.com/cat?type=sm?id=\${index}\`} alt="Picture of a cat"
+                <img class="item-image" src={\`https://cataas.com/cat?type=sm?id=\${index}\`} alt="Picture of a cat"
                 />
               </div>
             ))}
@@ -149,7 +149,7 @@ examples:
           ##jsx
           <XyzTransition duration="auto" xyz="fade out-delay-5">
             { modalOpen && (
-              <div className="modal-overlay" onClick={openModal}>
+              <div className="modal-overlay" onClick={closeModal}>
                 <div className="modal xyz-nested" xyz="fade short-100% delay-3 ease-out-back">
                   <div className="modal-header xyz-nested" xyz="up-100% in-delay-3">
                     <h1 className="xyz-nested" xyz="fade left in-delay-6">I am a modal</h1>
